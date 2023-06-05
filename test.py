@@ -12,38 +12,37 @@ def start_game():
 
 def stop_game():
     print("Game stopped")
-    
+
 def create_maze():
-        maze = [
-            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 0, 1, 1, 1, 0, 1, 0, 1, 1],
-            [1, 0, 1, 0, 1, 0, 1, 1, 1, 1],
-            [1, 0, 1, 0, 1, 0, 1, 0, 0, 1],
-            [1, 0, 1, 0, 1, 0, 1, 1, 0, 1],
-            [1, 0, 1, 0, 0, 0, 0, 1, 0, 1],
-            [1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
-            [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-            [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
-        ]
+    maze = [[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 0, 1, 1, 1, 0, 1, 0, 1, 1],
+    [1, 0, 1, 0, 1, 0, 1, 1, 1, 1],
+    [1, 0, 1, 0, 1, 0, 1, 0, 0, 1],
+    [1, 0, 1, 0, 1, 0, 1, 1, 0, 1],
+    [1, 0, 1, 0, 0, 0, 0, 1, 0, 1],
+    [1, 0, 1, 1, 1, 1, 1, 1, 0, 1],
+    [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]]
 
-        available_positions = []
-        for row in range(1, len(maze) - 1):
-            for col in range(1, len(maze[0]) - 1):
-                if maze[row][col] == 0:
-                    available_positions.append((row, col))
+    available_positions = []
+    for row in range(1, len(maze) - 1):
+        for col in range(1, len(maze[0]) - 1):
+            if maze[row][col] == 0:
+                available_positions.append((row, col))
 
 
-        if available_positions:
-            start_row, start_col = random.choice(available_positions)
-            maze[start_row][start_col] = 2
-            available_positions.remove((start_row, start_col))
+    if available_positions:
+        start_row, start_col = random.choice(available_positions)
+        maze[start_row][start_col] = 2
+        available_positions.remove((start_row, start_col))
 
-        if available_positions:
-            end_row, end_col = random.choice(available_positions)
-            maze[end_row][end_col] = 3
+    if available_positions:
+        end_row, end_col = random.choice(available_positions)
+        maze[end_row][end_col] = 3
 
-        return maze
+    return maze
+
 
 def display_maze(maze):
     canvas.delete("maze")
@@ -63,8 +62,7 @@ def display_maze(maze):
             else:
                 canvas.create_rectangle(x1, y1, x2, y2, fill="white", tags="maze")
 
-
-main = tk.Tk()
+main= tk.Tk()
 main.title("Herní menu")
 main.geometry("1200x750")  
 button_font = font.Font(size=15, weight = 'bold')
